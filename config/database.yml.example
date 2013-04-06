@@ -1,0 +1,21 @@
+login: &login
+  adapter: postgresql
+  host: localhost
+  port: 5432
+
+development:
+  database: hydra_development
+  username: <%= ENV['USER'] %>
+  <<: *login
+
+test:
+  database: hydra_test<%= ENV['TEST_ENV_NUMBER'] %>
+  <<: *login
+
+staging:
+  database: hydra_staging
+  <<: *login
+
+production:
+  database: hydra_production
+  <<: *login
