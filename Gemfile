@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem "rails", "~> 3.2.13"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'pg'
+gem "devise", "~> 2.2"
+gem "flash-message-conductor", "~> 2.0.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,3 +37,22 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+  gem 'rspec-rails', "~> 2.13"
+  gem "factory_girl_rails", "~> 4.2"
+  gem "capybara", "~> 2.0"
+  gem "capybara-webkit", "~> 0.14"
+  gem "faker", "~> 1.1"
+  gem "aasm", "~> 3.0"
+  gem "launchy", "~> 2.2.0"
+  gem "database_cleaner", "~> 0.9"
+  gem "spork-rails", "~> 3.2"
+  gem 'guard-sass', "~> 1.0", require: false
+  gem 'guard-spork', "~> 1.5", require: false
+  gem 'rb-inotify', "0.9", require: false
+  gem 'rb-fsevent', "0.9", require: false
+  gem 'terminal-notifier-guard', "~> 1.5"
+  gem 'timecop', "~> 0.6"
+  gem 'headless', "~> 1.0"
+end
