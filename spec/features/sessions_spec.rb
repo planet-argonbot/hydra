@@ -10,7 +10,7 @@ feature "Signing In" do
     fill_in :admin_email, :with => @admin.email
     fill_in :admin_password, :with => 'test123456'
     click_button "Sign in"
-    current_path.should == admin_root_path
+    expect(current_path).to eq admin_root_path
   end
 
   scenario "A person shouldn't be able to sign in with invalid authentication" do
@@ -18,7 +18,7 @@ feature "Signing In" do
     fill_in :admin_email, :with => 'foo@bar.com'
     fill_in :admin_password, :with => 'test123456'
     click_button "Sign in"
-    current_path.should == new_admin_session_path
+    expect(current_path).to eq new_admin_session_path
   end
 end
 
@@ -33,13 +33,13 @@ feature "Signing Out" do
     fill_in :admin_password, :with => 'test123456'
     click_button "Sign in"
     click_link "Sign out"
-    current_path.should == new_admin_session_path
+    expect(current_path).to eq new_admin_session_path
   end
 end
 
 feature "Admin Access" do
   scenario "A person shouldn't be able to access the admin section if they are not signed in" do
     visit '/admin'
-    current_path.should == new_admin_session_path
+    expect(current_path).to eq new_admin_session_path
   end
 end
