@@ -1,4 +1,16 @@
 Hydra::Application.routes.draw do
+  devise_for :admins, skip: [:sessions]
+  as :admin do
+    root to: "devise/sessions#new"
+    get 'sign_in' => 'devise/sessions#new', as: :new_admin_session
+    post 'sign_in' => 'devise/sessions#create', as: :admin_session
+    delete 'sign_out' => 'devise/sessions#destroy', as: :destroy_admin_session
+  end
+
+  namespace :admin do
+    root to: "projects#index"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
