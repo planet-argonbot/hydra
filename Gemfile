@@ -39,6 +39,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development, :test do
+  gem 'turn', require: false
   gem 'rspec-rails', "~> 2.13"
   gem "factory_girl_rails", "~> 4.2"
   gem "capybara", "~> 2.0"
