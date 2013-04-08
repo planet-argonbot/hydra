@@ -5,6 +5,10 @@ class Admin::ProjectsController < Admin::ApplicationController
     @projects = Project.all
   end
 
+  def show
+    @releases = @project.releases.all
+  end
+
   protected
   def fetch_project
     @project = Project.find params[:id]
