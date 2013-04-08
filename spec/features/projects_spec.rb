@@ -15,11 +15,16 @@ feature "Viewing a list of projects" do
 end
 
 feature "Viewing an individual project" do
+  let(:project) { create(:project) }
+
   background do
     setup_admin_and_sign_in
   end
 
-  scenario "An admin should be able to see the project name"
+  scenario "An admin should be able to see the project name" do
+    visit admin_project_path(project)
+    expect(page).to have_content project.name
+  end
 
   scenario "An admin should be able to see releases for the project"
 end
