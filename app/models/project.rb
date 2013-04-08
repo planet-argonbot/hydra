@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   # Associations
+  has_many :releases
 
   # Delegates
 
