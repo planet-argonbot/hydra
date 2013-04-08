@@ -26,5 +26,10 @@ feature "Viewing an individual project" do
     expect(page).to have_content project.name
   end
 
-  scenario "An admin should be able to see releases for the project"
+  scenario "An admin should be able to see releases for the project" do
+    release = create(:release, project: project)
+
+    visit admin_project_path(project)
+    expect(page).to have_content release.branch
+  end
 end
