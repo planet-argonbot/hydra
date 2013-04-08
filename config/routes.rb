@@ -9,7 +9,9 @@ Hydra::Application.routes.draw do
 
   namespace :admin do
     root to: "projects#index"
-    resources :projects
+    resources :projects do
+      resources :releases
+    end
   end
 
   # The priority is based upon order of creation:
