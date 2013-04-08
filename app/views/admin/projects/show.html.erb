@@ -1,1 +1,22 @@
 <%= @project.name %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Person Name</th>
+      <th>Branch</th>
+      <th>Environment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @releases.each do |release| %>
+    <tr>
+      <td><%= link_to release.id, admin_project_release_path(release) %></td>
+      <td><%= release.admin.name %></td>
+      <td><%= release.branch %></td>
+      <td><%= release.environment %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
