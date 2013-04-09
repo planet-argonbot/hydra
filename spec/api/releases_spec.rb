@@ -1,18 +1,23 @@
 require 'spec_helper'
+require 'rack/test'
 
-describe "Releases API" do
+include Rack::Test::Methods
+
+def app
+  Hydra::Application.new
+end
+
+describe "Releases API", type: :api do
   let(:admin) { create(:admin) }
   let(:payload) do
-    { :email_address => 'carlos@eddorre.com', :branch => 'master', :environment => 'production' }
+    { email_address: 'carlos@eddorre.com', branch: 'master', environment: 'production' }
   end
   let(:project) { create(:project) }
 
-  it "should return a 410 error when attempting to create a release with an incorrect api key" do
-    puts "PATH #{api_project_releases_path}"
-    post api_project_releases_path(project, :json, 'foobar'), :release => payload.to_json
+  it "should return a 401 error when attempting to create a release with an incorrect api key" do
+    post api_project_releases_path(project, format: :json), access_token: 'foo', release: payload.to_json
 
-    expect(last_response.status).to eq 401
-    expect(last_response.body).to eq "Unauthorized"
+    expect(response.status).to eq 401
   end
 
   it "should create a new release"
