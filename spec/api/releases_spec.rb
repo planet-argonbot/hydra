@@ -8,7 +8,7 @@ def app
 end
 
 describe "Releases API", type: :api do
-  let(:admin) { create(:admin) }
+  let!(:admin) { create(:admin, email: 'carlos@eddorre.com') }
   let(:payload) do
     { email_address: 'carlos@eddorre.com', branch: 'master', environment: 'production' }
   end
