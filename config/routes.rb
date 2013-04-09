@@ -14,6 +14,12 @@ Hydra::Application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :projects do
+      resources :releases
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
