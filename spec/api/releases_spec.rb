@@ -20,7 +20,12 @@ describe "Releases API", type: :api do
     expect(response.status).to eq 401
   end
 
-  it "should create a new release"
+  it "should create a new release" do
+    api_key = create(:api_key)
+    post api_project_releases_path(project, format: :json), access_token: api_key.access_token, release: payload.to_json
+
+    expect(response.status).to eq 200
+  end
 
   it "should return a 412 error when attempting to create a release that is invalid"
 
