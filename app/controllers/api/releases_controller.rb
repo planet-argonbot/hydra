@@ -8,7 +8,7 @@ class Api::ReleasesController < Api::BaseController
 
     parsed_payload = JSON.parse(params[:release]).symbolize_keys!
 
-    @release = @project.releases.build(parsed_payload)
+    @release = @project.releases.new(parsed_payload)
 
     if @release.save
       respond_with(@release, status: :ok, location: api_project_releases_path)
