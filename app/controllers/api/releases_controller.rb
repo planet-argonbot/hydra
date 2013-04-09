@@ -22,7 +22,7 @@ class Api::ReleasesController < Api::BaseController
 
   protected
   def fetch_project
-    @project = Project.find_by_name params[:project_id]
+    @project = Project.where("name = ?", params[:project_id]).first
 
     raise ActiveRecord::RecordNotFound if @project.blank?
 
