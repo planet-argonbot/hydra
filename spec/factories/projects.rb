@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :project do
-    name { Faker::Name.name }
+    name { Faker::Lorem.word }
   end
 end
