@@ -2,10 +2,17 @@
 
 <h1>Projects</h1>
 <table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <td>Project Name</td>
+      <td>Number of Releases</td>
+    </tr>
+  </thead>
   <tbody>
     <% @projects.each do |project| %>
     <tr>
       <td><%= link_to project.name, admin_project_path(project) %></td>
+      <td><%= project.releases_count || 0 %></td>
     </tr>
     <% end %>
   </tbody>

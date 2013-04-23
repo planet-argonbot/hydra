@@ -12,6 +12,15 @@ feature "Viewing a list of projects" do
 
     expect(page).to have_content 'This is a test project'
   end
+
+  scenario "An admin should be able to see the count of releases for a project" do
+    project = create(:project)
+    release = create(:release, project: project, admin: @admin)
+
+    visit admin_projects_path
+
+    expect(page).to have_content "1"
+  end
 end
 
 feature "Viewing an individual project" do
