@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423044615) do
+ActiveRecord::Schema.define(:version => 20130423195905) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,9 +57,12 @@ ActiveRecord::Schema.define(:version => 20130423044615) do
     t.string   "environment"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "created_by"
+    t.datetime "deployed_at"
   end
 
   add_index "releases", ["admin_id"], :name => "index_releases_on_admin_id"
+  add_index "releases", ["deployed_at"], :name => "index_releases_on_deployed_at"
   add_index "releases", ["project_id"], :name => "index_releases_on_project_id"
 
 end
