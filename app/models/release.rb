@@ -1,7 +1,7 @@
 class Release < ActiveRecord::Base
   # Associations
   belongs_to :admin
-  belongs_to :project
+  belongs_to :project, counter_cache: true
 
   # Validations
   validates :project, :admin, presence: true
