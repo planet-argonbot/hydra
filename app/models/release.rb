@@ -14,7 +14,7 @@ class Release < ActiveRecord::Base
   before_validation :set_admin, on: :create
 
   # Attributes
-  attr_accessible :branch, :environment, :username, :email_address
+  attr_accessible :branch, :environment, :username, :email_address, :deployed_at
   attr_accessor :email_address
 
   private
