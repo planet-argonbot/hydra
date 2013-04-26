@@ -9,6 +9,7 @@ gem 'pg'
 gem "devise", "~> 2.2"
 gem "flash-message-conductor", "~> 2.0"
 gem "gravatar_image_tag", "~> 1.1"
+gem "faraday", "~> 0.8"
 
 # Gems used only for assets and not required
 # in production environments by default.
