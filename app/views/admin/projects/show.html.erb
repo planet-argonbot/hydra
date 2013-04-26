@@ -9,17 +9,17 @@
       <th>Name</th>
       <th>Branch</th>
       <th>Environment</th>
-      <th>Created At</th>
+      <th>Deployed At</th>
     </tr>
   </thead>
   <tbody>
     <% @releases.each do |release| %>
     <tr>
-      <td><%= gravatar_image_tag release.admin.email, gravatar: { size: 45 } %></td>
+      <td><%= gravatar_image_tag release.admin.email, gravatar: { size: 45 }, class: 'img-rounded' %></td>
       <td><%= release.admin.name %></td>
       <td><%= release.branch %></td>
       <td><%= release.environment %></td>
-      <td><%= release.created_at %></td>
+      <td><%= release.deployed_at %></td>
     </tr>
     <% end %>
   </tbody>
