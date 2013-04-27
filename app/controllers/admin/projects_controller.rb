@@ -6,7 +6,7 @@ class Admin::ProjectsController < Admin::ApplicationController
   end
 
   def show
-    @releases = @project.releases.all
+    @releases = @project.releases.order("deployed_at DESC")
   end
 
   protected
