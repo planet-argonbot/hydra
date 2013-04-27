@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   # Associations
-  has_many :releases
+  has_many :releases, dependent: :destroy
 
   # Delegates
 
