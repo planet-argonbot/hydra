@@ -1,0 +1,17 @@
+<h1>API Keys</h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <td>Access Token</td>
+      <td>State</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @api_keys.each do |api_key| %>
+    <tr>
+      <td><%= link_to api_key.access_token, admin_api_keys_path(api_key) %></td>
+      <td><%= api_key.aasm_state %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
