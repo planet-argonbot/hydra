@@ -12,6 +12,8 @@ Hydra::Application.routes.draw do
     resources :projects do
       resources :releases
     end
+
+    resources :api_keys
   end
 
   namespace :api do
