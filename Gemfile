@@ -52,11 +52,11 @@ group :development, :test do
   gem "launchy", "~> 2.2.0"
   gem "database_cleaner", "~> 0.9"
   gem "spork-rails", "~> 3.2"
-  gem 'guard-sass', "~> 1.0", require: false
   gem 'guard-spork', "~> 1.5", require: false
-  gem 'rb-inotify', "0.9", require: false
-  gem 'rb-fsevent', "0.9", require: false
+  gem 'rb-fsevent', "~> 0.9", require: false
   gem 'terminal-notifier-guard', "~> 1.5"
   gem 'timecop', "~> 0.6"
   gem 'headless', "~> 1.0"
+  gem "guard", "~> 1.8"
+  gem "guard-rspec", "~> 2.6"
 end
