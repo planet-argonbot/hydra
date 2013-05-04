@@ -1,10 +1,11 @@
 <h1>Create a new project</h1>
 
 <%= form_for [:admin, @project] do |f| %>
-  <label>
-    Project name
-    <%= f.text_field :name %>
-  </label>
+  <fieldset>
+    <label>Project name</label>
+    <%= f.text_field :name, placeholder: 'Enter a project name', class: "input-xxlarge" %>
+  </fieldset>
 
-  <%= f.button "Create project" %>
+  <%= f.button "Create project", class: 'btn btn-success' %>
+  <%= link_to 'Cancel', admin_projects_path, class: 'btn' %>
 <% end %>
