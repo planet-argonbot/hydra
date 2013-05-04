@@ -58,4 +58,12 @@ feature "Creating a new project" do
 
     expect(page).to have_content name
   end
+
+  scenario "An admin should see an error message if a project can't be created" do
+    visit new_admin_project_path
+
+    click_button "Create project"
+
+    expect(page).to have_content "There was an error creating the project. Please try again."
+  end
 end
