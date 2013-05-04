@@ -31,6 +31,10 @@ class ApiKey < ActiveRecord::Base
     end
   end
 
+  def to_param
+    self.access_token
+  end
+
   private
   def generate_access_token
     begin
