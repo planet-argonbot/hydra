@@ -1,0 +1,10 @@
+<h1>Create a new project</h1>
+
+<%= form_for [:admin, @project] do |f| %>
+  <label>
+    Project name
+    <%= f.text_field :name %>
+  </label>
+
+  <%= f.button "Create project" %>
+<% end %>
