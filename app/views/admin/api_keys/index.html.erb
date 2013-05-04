@@ -1,17 +1,30 @@
 <h1>API Keys</h1>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <td>Access Token</td>
-      <td>State</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @api_keys.each do |api_key| %>
-    <tr>
-      <td><%= link_to api_key.access_token, admin_api_keys_path(api_key) %></td>
-      <td><%= api_key.aasm_state %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<% if @api_keys.blank? %>
+  <p class="text-warning">There are no API keys. Would you like to add one?</p>
+  <%= link_to 'Generate an API key', admin_api_keys_path, method: :post, class: "btn btn-success" %>
+<% else %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <td>Access Token</td>
+        <td>State</td>
+        <td>Created At</td>
+        <td>Updated At</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @api_keys.each do |api_key| %>
+      <tr>
+        <td><%= link_to api_key.access_token, edit_admin_api_key_path(api_key) %></td>
+        <td>
+          <%= api_key.aasm_state %>
+          <%= link_to "#{content_tag(:i, '', class: 'icon-remove-sign')} #{api_key.aasm_events_for_state(api_key.aasm_state.to_sym).first.to_s}".html_safe, admin_api_key_path(api_key, status_change: "#{api_key.aasm_events_for_state(api_key.aasm_state.to_sym).first.to_s}"), class: 'text-error', method: :put %>
+        </td>
+        <td><%= api_key.created_at %></td>
+        <td><%= api_key.updated_at %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
