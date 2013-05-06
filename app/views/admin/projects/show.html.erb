@@ -15,7 +15,7 @@
   <tbody>
     <% @releases.each do |release| %>
     <tr>
-      <td><%= gravatar_image_tag release.admin.email, gravatar: { size: 45 }, class: 'img-rounded' %></td>
+      <td class="image"><%= gravatar_image_tag release.admin.email, gravatar: { size: 45 }, class: 'img-circle' %></td>
       <td><%= release.admin.name %></td>
       <td><%= release.branch %></td>
       <td><%= release.environment %></td>
