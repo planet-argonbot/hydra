@@ -11,6 +11,9 @@ gem "flash-message-conductor", "~> 2.0"
 gem "gravatar_image_tag", "~> 1.1"
 gem "faraday", "~> 0.8"
 gem "faraday_middleware", "~> 0.9"
+gem "aasm", "~> 3.0"
+gem "friendly_id", "~> 4.0.9"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -48,7 +51,6 @@ group :development, :test do
   gem "capybara", "~> 2.0"
   gem "capybara-webkit", "~> 0.14"
   gem "faker", "~> 1.1"
-  gem "aasm", "~> 3.0"
   gem "launchy", "~> 2.2.0"
   gem "database_cleaner", "~> 0.9"
   gem "spork-rails", "~> 3.2"
