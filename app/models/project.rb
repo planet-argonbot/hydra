@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
 
   # Extensions
   include AASM
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   # Callbacks
 
@@ -32,6 +34,6 @@ class Project < ActiveRecord::Base
   end
 
   def to_param
-    self.name
+    self.slug
   end
 end
