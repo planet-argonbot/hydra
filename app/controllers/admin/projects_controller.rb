@@ -27,6 +27,6 @@ class Admin::ProjectsController < Admin::ApplicationController
 
   protected
   def fetch_project
-    @project = Project.where("name = ?", params[:id]).first
+    @project = Project.find(params[:id])
   end
 end

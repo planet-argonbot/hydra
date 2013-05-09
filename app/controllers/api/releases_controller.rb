@@ -23,9 +23,7 @@ class Api::ReleasesController < Api::BaseController
 
   protected
   def fetch_project
-    @project = Project.where("name = ?", params[:project_id]).first
-
-    raise ActiveRecord::RecordNotFound if @project.blank?
+    @project = Project.find(params[:project_id])
 
     rescue ActiveRecord::RecordNotFound
       respond_with('Project not found', status: :not_found, location: api_project_releases_path)
