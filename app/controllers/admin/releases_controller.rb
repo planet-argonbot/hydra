@@ -1,4 +1,4 @@
-class Admin::ReleasesController < ApplicationController
+class Admin::ReleasesController < Admin::ApplicationController
   before_filter :fetch_project
 
   respond_to :html

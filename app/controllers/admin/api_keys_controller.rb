@@ -1,4 +1,4 @@
-class Admin::ApiKeysController < ApplicationController
+class Admin::ApiKeysController < Admin::ApplicationController
   before_filter :fetch_api_key, only: [ :edit, :update ]
 
   def index
