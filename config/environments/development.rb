@@ -34,4 +34,6 @@ Hydra::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  default_url_options[:host] = 'hydra.dev'
 end
