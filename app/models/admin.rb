@@ -3,6 +3,7 @@ class Admin < ActiveRecord::Base
   has_many :releases
 
   # Validations
+  validates :first_name, :last_name, presence: true
 
   # Scopes
 
