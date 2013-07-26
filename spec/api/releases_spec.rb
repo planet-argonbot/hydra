@@ -3,10 +3,6 @@ require 'rack/test'
 
 include Rack::Test::Methods
 
-def app
-  Hydra::Application.new
-end
-
 describe "Releases API", type: :api do
   let!(:admin) { create(:admin, email: 'carlos@eddorre.com') }
   let(:payload) do
