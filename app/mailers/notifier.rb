@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: ENV['default_sender']
 
   def new_account_email(admin)
     @admin = admin
