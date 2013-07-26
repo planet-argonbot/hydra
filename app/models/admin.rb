@@ -15,6 +15,7 @@ class Admin < ActiveRecord::Base
 
   # Callbacks
   before_validation :generate_random_password
+  after_create :send_password_reset_email
 
   # Attributes
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
@@ -27,5 +28,12 @@ class Admin < ActiveRecord::Base
   protected
   def generate_random_password
     self.password = self.password_confirmation = SecureRandom.base64(13) if self.save_context == :ui
+  end
+
+  def send_password_reset_email
+    if self.save_context == :ui
+      self.send(:generate_reset_password_token!)
+      Notifier.new_account_email(self).deliver unless Rails.env.test?
+    end
   end
 end

@@ -13,11 +13,19 @@ describe Admin do
     expect(admin).to have(1).error_on(:last_name)
   end
 
-  it "should automatically generate an random password if the save content is ui." do
+  it "should automatically generate an random password if the save content is ui" do
     admin = build(:admin, password: nil)
     admin.save_context = :ui
     admin.save
 
     expect(admin.encrypted_password).not_to be_blank
+  end
+
+  it "should should automatically generate a reset token on create if the save context is ui" do
+    admin = build(:admin, password: nil)
+    admin.save_context = :ui
+    admin.save
+
+    expect(admin.reset_password_token).not_to be_blank
   end
 end
