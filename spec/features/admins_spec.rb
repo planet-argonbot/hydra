@@ -16,4 +16,16 @@ feature "An admin viewing other admins" do
     visit admin_admin_path(admin)
     expect(page).to have_content admin.name
   end
+
+  scenario "An admin should be able to create a new admin" do
+    visit admin_admins_path
+    click_link "Add new admin"
+    fill_in :email, with: Faker::Email.address
+    fill_in :first_name, with: Faker::Name.last
+    fill_in :last_name, with: Faker::Name.first
+
+    click_button "Create admin"
+
+    expect(page).to_have content "Admin was created successfully"
+  end
 end
