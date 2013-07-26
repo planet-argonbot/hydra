@@ -13,6 +13,7 @@ gem "faraday", "~> 0.8"
 gem "faraday_middleware", "~> 0.9"
 gem "aasm", "~> 3.0"
 gem "friendly_id", "~> 4.0.9"
+gem "rest-client"
 
 
 # Gems used only for assets and not required
