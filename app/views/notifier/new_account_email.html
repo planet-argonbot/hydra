@@ -2,4 +2,4 @@ Hello <%= @admin.first_name %>
 
 An account has been created for you to sign into hydra-app.planetargon.com. Follow the link below to choose a password and sign in.
 
-<%= confirm_admin_account_url(reset_password_token: @admin.reset_password_token) %>
+<%= edit_admin_password_url(reset_password_token: @admin.reset_password_token) %>
