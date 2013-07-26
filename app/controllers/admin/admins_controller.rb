@@ -5,7 +5,7 @@ class Admin::AdminsController < Admin::ApplicationController
   end
 
   def show
-    @admin = Admin.where(id: params[:id])
+    @admin = Admin.where(id: params[:id]).first
   end
 
 end
