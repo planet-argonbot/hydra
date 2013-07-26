@@ -9,6 +9,7 @@ Hydra::Application.routes.draw do
 
   namespace :admin do
     root to: "projects#index"
+    resources :admins
     resources :projects do
       resources :releases
     end
