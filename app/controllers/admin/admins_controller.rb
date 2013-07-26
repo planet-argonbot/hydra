@@ -14,6 +14,7 @@ class Admin::AdminsController < Admin::ApplicationController
 
   def create
     @admin = Admin.new(params[:admin])
+    @admin.save_context = :ui
 
     if @admin.save
       add_message "Admin was created successfully."
