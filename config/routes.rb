@@ -19,7 +19,7 @@ Hydra::Application.routes.draw do
 
   namespace :api do
     resources :projects do
-      resources :releases
+      resources :releases, defaults: { format: 'json' }
     end
   end
 
