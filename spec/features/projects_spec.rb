@@ -67,3 +67,32 @@ feature "Creating a new project" do
     expect(page).to have_content "There was an error creating the project. Please try again."
   end
 end
+
+feature "Updating a project" do
+  let(:project) { create(:project) }
+
+  background do
+    setup_admin_and_sign_in
+  end
+
+  scenario "An admin should be able to update a new project" do
+    visit edit_admin_project_path(project)
+
+    previous_name = project.name
+
+    fill_in :project_name, with: "Updated name"
+    click_button "Update project"
+
+    expect(page).to have_content "Updated name"
+    expect(page).to_not have_content previous_name
+  end
+
+  scenario "An admin should see an error message if a project can't be updated" do
+    visit edit_admin_project_path(project)
+    
+    fill_in :project_name, with: ""
+    click_button "Update project"
+
+    expect(page).to have_content "There was an error updating the project. Please try again."
+  end
+end

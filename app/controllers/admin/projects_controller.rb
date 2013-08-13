@@ -25,6 +25,19 @@ class Admin::ProjectsController < Admin::ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @project.update_attributes(params[:project])
+      add_message "Project was updated successfully."
+      redirect_to admin_projects_path
+    else
+      add_error "There was an error updating the project. Please try again."
+      render :edit
+    end
+  end
+
   protected
   def fetch_project
     @project = Project.find(params[:id])
