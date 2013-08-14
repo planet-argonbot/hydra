@@ -1,0 +1,15 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to 'Hydra', admin_projects_path, class: 'brand' %>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><%= link_to 'API Keys', admin_api_keys_path %></li>
+          <li><%= link_to 'Projects', admin_projects_path %></li>
+          <li><%= link_to 'Admins', admin_admins_path %></li>
+          <li><%= link_to 'Sign out', destroy_admin_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
