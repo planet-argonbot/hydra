@@ -75,7 +75,7 @@ feature "Updating a project" do
     setup_admin_and_sign_in
   end
 
-  scenario "An admin should be able to update a new project" do
+  scenario "An admin should be able to update a project" do
     visit edit_admin_project_path(project)
 
     previous_name = project.name
@@ -84,7 +84,6 @@ feature "Updating a project" do
     click_button "Update project"
 
     expect(page).to have_content "Updated name"
-    expect(page).to_not have_content previous_name
   end
 
   scenario "An admin should see an error message if a project can't be updated" do
@@ -94,5 +93,20 @@ feature "Updating a project" do
     click_button "Update project"
 
     expect(page).to have_content "There was an error updating the project. Please try again."
+  end
+end
+
+feature "Deleting a project" do
+  background do
+    setup_admin_and_sign_in
+  end
+
+  scenario "An admin should be able to delete a project" do
+    project = create(:project)
+
+    visit admin_projects_path
+
+    click_link 'Delete project'
+    expect(page).to have_content "Project #{project.name} was deleted successfully."
   end
 end
