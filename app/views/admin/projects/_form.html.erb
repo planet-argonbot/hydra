@@ -1,9 +1,0 @@
-<%= form_for [:admin, @project] do |f| %>
-  <fieldset>
-    <label>Project name</label>
-    <%= f.text_field :name, placeholder: 'Enter a project name', class: "input-xxlarge" %>
-  </fieldset>
-
-  <%= f.submit submit_button, class: 'btn btn-success' %>
-  <%= link_to 'Cancel', admin_projects_path, class: 'btn' %>
-<% end %>
