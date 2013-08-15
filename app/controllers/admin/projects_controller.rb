@@ -38,6 +38,15 @@ class Admin::ProjectsController < Admin::ApplicationController
     end
   end
 
+  def destroy
+    if @project.destroy
+      add_message "Project #{@project.name} was deleted successfully."
+    else
+      add_error "There was an error deleting project #{@project.name}. Please try again."
+    end
+    redirect_to admin_projects_path
+  end
+
   protected
   def fetch_project
     @project = Project.find(params[:id])
