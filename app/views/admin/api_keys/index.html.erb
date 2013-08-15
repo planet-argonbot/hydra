@@ -4,6 +4,9 @@
   <p class="text-warning">There are no API keys. Would you like to add one?</p>
   <%= link_to 'Generate an API key', admin_api_keys_path, method: :post, class: "btn btn-success" %>
 <% else %>
+  <div class="table-actions">
+    <%= link_to "Generate an API key", admin_api_keys_path, method: :post, class: "btn btn-primary" %>
+  </div>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
