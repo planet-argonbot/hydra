@@ -27,3 +27,14 @@
     <% end %>
   </tbody>
 </table>
+
+<hr>
+
+<div id="chart"></div>
+
+<script>
+  var data = []
+  <% Project.find(@project.id).releases.group_by_month.each do |month, releases| %>
+    data.push({month: '<%= month %>', releases: <%= releases %>})
+  <% end %>
+</script>
