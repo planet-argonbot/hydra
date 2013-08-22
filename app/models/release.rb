@@ -24,7 +24,7 @@ class Release < ActiveRecord::Base
   end
 
   def month
-    created_at.strftime('%B')
+    deployed_at.strftime('%B')
   end
 
   private

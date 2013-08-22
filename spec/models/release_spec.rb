@@ -19,7 +19,7 @@ describe Release do
 
   describe "#month" do
     it "should return a release's month" do
-      release.created_at = DateTime.new(2013,8,20)
+      release.deployed_at = DateTime.new(2013,8,20)
       expect(release.month).to eq('August')
     end
   end
