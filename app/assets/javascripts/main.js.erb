@@ -1,0 +1,51 @@
+$(document).ready(function() {
+  if(data) {
+    var barWidth = 40;
+    var width = (barWidth + 10) * data.length;
+    var height = 200;
+
+    var x = d3.scale.linear().domain([0, data.length]).range([0, width]);
+    var y = d3.scale.linear().domain([0, d3.max(data, function(d) { return d.releases; })]).
+      rangeRound([0, height]);
+
+    var chart = d3.select('#chart').
+      append('svg').
+      attr('id', 'chart').
+      attr('height', height + 20).
+      attr('width', width);
+
+    chart.selectAll('rect').
+      data(data).
+      enter().
+      append('rect').
+      attr('x', function(d,i) { return x(i); }).
+      attr('y', function(d) { return height - y(d.releases); }).
+      attr('height', function(d) { return y(d.releases); }).
+      attr('width', barWidth);
+
+    chart.selectAll('text').
+      data(data).
+      enter().
+      append('text').
+      attr('x', function(d, i) { return x(i) + barWidth; }).
+      attr('y', function(d) { return height - y(d.releases); }).
+      attr('dx', -barWidth/2).
+      attr('dy', '1.2em').
+      attr('text-anchor', 'middle').
+      text(function(d) { return d.releases; }).
+      attr('fill', 'white');
+
+    chart.selectAll('text.yAxis').
+      data(data).
+      enter().
+      append('text').
+      attr('class', 'yAxis').
+      attr('x', function(d, i) { return x(i) + barWidth; }).
+      attr('y', height).
+      attr('dx', -barWidth/2).
+      attr('text-anchor', 'middle').
+      attr('style', 'font-size: 9; font-family: Helvetica, sans-serif').
+      text(function(d) { return d.month;}).
+      attr('transform', 'translate(0, 18)');
+  }
+});

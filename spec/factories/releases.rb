@@ -6,5 +6,6 @@ FactoryGirl.define do
     association :project, factory: :project
     branch { Faker::Name.name }
     environment { %w(production staging development).sample }
+    deployed_at { Time.now }
   end
 end

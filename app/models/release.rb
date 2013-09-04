@@ -17,6 +17,16 @@ class Release < ActiveRecord::Base
   attr_accessible :branch, :environment, :username, :email_address, :deployed_at
   attr_accessor :email_address
 
+  def self.group_by_month
+    all.each_with_object(Hash.new(0)) do |r, h|
+      h[r.month] += 1
+    end
+  end
+
+  def month
+    deployed_at.strftime('%B')
+  end
+
   private
   def set_admin
     self.admin = Admin.where("email = ?", self.email_address).first if self.email_address
