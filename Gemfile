@@ -14,6 +14,7 @@ gem "faraday_middleware", "~> 0.9"
 gem "aasm", "~> 3.0"
 gem "friendly_id", "~> 4.0.9"
 gem "rest-client"
+gem 'bugsnag'
 
 
 # Gems used only for assets and not required
