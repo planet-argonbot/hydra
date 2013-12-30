@@ -1,6 +1,6 @@
 if Rails.env == 'production'
   Bugsnag.configure do |config|
-    config.api_key = "8acda8a0db2f1f95b8a107c8381f7ebf"
+    config.api_key = "1db5aad752923f2ee89c764fe0a1d356"
     config.use_ssl = true
   end
 end
