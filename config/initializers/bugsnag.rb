@@ -1,6 +1,6 @@
-if Rails.env == 'production'
+if Rails.env.production? && ENV["BUGSNAG_API_KEY"].present?
   Bugsnag.configure do |config|
-    config.api_key = "1db5aad752923f2ee89c764fe0a1d356"
+    config.api_key = ENV['BUGSNAG_API_KEY']
     config.use_ssl = true
   end
 end
