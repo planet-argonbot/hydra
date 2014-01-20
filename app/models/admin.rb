@@ -18,7 +18,7 @@ class Admin < ActiveRecord::Base
   after_create :send_password_reset_email
 
   # Attributes
-  attr_accessible :first_name, :last_name, :email, :email_alias, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :email, :email_aliases, :password, :password_confirmation, :remember_me
   attr_accessor :save_context
 
   def name

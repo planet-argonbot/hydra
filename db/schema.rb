@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(:version => 20140120181215) do
     t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email_alias"
+    t.string   "email_aliases"
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
-  add_index "admins", ["email_alias"], :name => "index_admins_on_email_alias"
+  add_index "admins", ["email_aliases"], :name => "index_admins_on_email_aliases"
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "api_keys", :force => true do |t|
