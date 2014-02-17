@@ -29,6 +29,6 @@ class Release < ActiveRecord::Base
 
   private
   def set_admin
-    self.admin = Admin.where("email = ?", self.email_address).first if self.email_address
+    self.admin = Admin.where("email = ? or email_aliases like ?", self.email_address, "%#{self.email_address}%").first if self.email_address
   end
 end

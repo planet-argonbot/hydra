@@ -23,4 +23,32 @@ describe Release do
       expect(release.month).to eq('August')
     end
   end
+  
+  describe "Setting an admin user automatically" do
+    let!(:admin_user) { create(:admin, email: 'carlos@planetargon.com') }
+    let(:release) { build(:release, admin: nil) }
+
+    it "associates release admin user by provided email" do
+      release.email_address = 'carlos@planetargon.com'
+      release.save
+
+      expect(release.admin).to eq(admin_user)
+    end
+
+    it "associates release admin user by provided email alias" do
+      admin_user.update_attributes(email_aliases: 'alias@example.com')
+      release.email_address ='alias@example.com'
+      release.save
+
+      expect(release.admin).to eq admin_user
+    end
+
+    it "does not associate the admin user when the alias doesn't match" do
+      admin_user.update_attributes(email_aliases: 'not@example.com')
+      release.email_address ='alias@example.com'
+      release.save
+
+      expect(release.admin).not_to eq admin_user
+    end
+  end
 end
