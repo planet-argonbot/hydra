@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails", "~> 3.2.18"
+gem "rails", "~> 3.2.22"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,7 +15,6 @@ gem "aasm", "~> 3.0"
 gem "friendly_id", "~> 4.0.9"
 gem "rest-client"
 gem 'bugsnag'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
